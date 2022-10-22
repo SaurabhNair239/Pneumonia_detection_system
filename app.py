@@ -4,7 +4,7 @@ from PIL import Image
 from tensorflow.keras.preprocessing.image import load_img, img_to_array, ImageDataGenerator
 from tensorflow.keras.applications.vgg16 import preprocess_input
 import pickle
-
+from prediction_file import binary_classification
 
 slt.title("Pneumonia Classification Deep learning model")
 
@@ -20,15 +20,9 @@ if file is not None:
     slt.write("Your result will be soon displayed. Predicting..")
     slt.spinner()
     with slt.spinner(text="Work in Progress..."):
-        image = load_img(img,target_size=(224,224))
-        image = img_to_array(image)
-        image = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
-        my_image = preprocess_input(image)
-        filename = 'cnn_model.pickle'
-        model = pickle.load(open(filename, 'rb'))
-        result = model.predict(my_image)
+        result = binary_classification(img)
         if result == 1:
-            slt.write("The models detects Pneumonia")
+            slt.write("The models detects Pneumonia. Please consult the doctor soon.")
             slt.write("")
             slt.write("")
             slt.write("")

@@ -137,10 +137,8 @@ plt.title("Model loss")
 plt.legend(["train","test"],loc = "upper left")
 plt.show()
 
-
-filename = 'cnn_model.pickle'
-pickle.dump(model, open(filename, 'wb'))
-
+file_name = "vgg16_model.h5"
+model.save(file_name)
 model_history_data = pd.DataFrame({"loss":vgghist.history["loss"],
                                    "val_loss":vgghist.history["val_loss"],
                                    "acc":vgghist.history["acc"],
