@@ -6,6 +6,11 @@ from tensorflow.keras.applications.vgg16 import preprocess_input
 import pickle
 from prediction_file import binary_classification
 
+slt.set_page_config(
+     page_title='Pneumonia Detection Model',
+     layout="wide",
+)
+
 slt.title("Pneumonia Classification Deep learning model")
 
 slt.header("Teaching systems to predict, If X_ray contains Pneumonia or not")
